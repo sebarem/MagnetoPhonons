@@ -2,3 +2,5 @@
 *.blg
 *.log
 *.aux
+*.toc
+*.pdf
