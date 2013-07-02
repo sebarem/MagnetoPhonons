@@ -1,66 +1,30 @@
 \pdfoutput=1
-%% ****** Start of file aiptemplate.tex ****** %
-%%
-%%   This file is part of the files in the distribution of AIP substyles for REVTeX4.
-%%   Version 4.1 of 9 October 2009.
-%%
-%
-% This is a template for producing documents for use with 
-% the REVTEX 4.1 document class and the AIP substyles.
-% 
-% Copy this file to another name and then work on that file.
-% That way, you always have this original template file to use.
 
 %\documentclass[aip,preprint,graphicx]{revtex4-1}
-\documentclass[prl,aps,superscriptaddress,reprint]{revtex4-1}
+\documentclass[prl,aps,superscriptaddress,showpacs,reprint]{revtex4-1}
 \usepackage{graphicx}
 \usepackage{amsmath}
 
 
 \begin{document}
 
-% Use the \preprint command to place your local institutional report number 
-% on the title page in preprint mode.
-% Multiple \preprint commands are allowed.
-%\preprint{}
 
 \title{Electrostatic control of magnetophonons in Graphene} %Title of paper
 
-% repeat the \author .. \affiliation  etc. as needed
-% \email, \thanks, \homepage, \altaffiliation all apply to the current author.
-% Explanatory text should go in the []'s, 
-% actual e-mail address or url should go in the {}'s for \email and \homepage.
-% Please use the appropriate macro for the type of information
-
-% \affiliation command applies to all authors since the last \affiliation command. 
-% The \affiliation command should follow the other information.
-
 \author{Sebastian R\'{e}mi}
 \affiliation{Boston University, Department of Physics, 590 Commonwealth Ave, Boston, MA 02215}
-\author{Anna K. Swan}
-\affiliation{Boston University, Department of Electrical and Computer Engineering}
-\affiliation{Boston University, Department of Physics, 590 Commonwealth Ave, Boston, MA 02215}
-\affiliation{Boston University, Photonics Center, 8 St. Mary's St, Boston, MA 02215}
 
 \author{Bennett B. Goldberg}
- \email[]{goldberg@bu.edu}
+
 \affiliation{Boston University, Department of Physics, 590 Commonwealth Ave, Boston, MA 02215}
 \affiliation{Boston University, Department of Electrical and Computer Engineering}
 \affiliation{Boston University, Photonics Center, 8 St. Mary's St, Boston, MA 02215}
 
-
-
-
-%\email[]{Your e-mail address}
-%\homepage[]{Your web page}
-%\thanks{}
-%\altaffiliation{}
-
-
-% Collaboration name, if desired (requires use of superscriptaddress option in \documentclass). 
-% \noaffiliation is required (may also be used with the \author command).
-%\collaboration{}
-%\noaffiliation
+\author{Anna K. Swan}
+ \email[]{swan@bu.edu}
+\affiliation{Boston University, Department of Electrical and Computer Engineering}
+\affiliation{Boston University, Department of Physics, 590 Commonwealth Ave, Boston, MA 02215}
+\affiliation{Boston University, Photonics Center, 8 St. Mary's St, Boston, MA 02215}
 
 \date{\today}
 
@@ -77,29 +41,29 @@ We investigate the filling factor dependence of the magneto-phonon coupling of t
 
 \maketitle %\maketitle must follow title, authors, abstract and \pacs
 
-% Body of paper goes here. Use proper sectioning commands. 
-% References should be done using the \cite, \ref, and \label commands
+\label{Intro}  
+When Dirac fermions in graphene are subject to a perpendicular magnetic field, the electronic states form discrete, degenerate Landau levels with energy of $E_{\pm, n}=\pm v_F\sqrt{2e\hbar Bn}$ (n is the Landau level index) \cite{neto2009electronic,goerbig2011electronic}. Due to the electron-phonon interaction magneto-exciton transitions between the levels can form coherent superpositions with optical phonons governed by the selection rule $\Delta n=\pm 1$ for level transitions \cite{PhysRevB.84.235138}. The energies of the coupled magneto-phonon hybrid states show strong anticrossings due to the strong enhancement of the interaction when the magneto-exciton is resonant with the optical phonon energy \cite{ando2007magnetic,goerbig2007filling,goerbig2011electronic}. 
 
-\label{Intro} When Dirac fermions in graphene are subject to a perpendicular magnetic field, the electronic levels become quantized. The energy of the Landau levels $E_{\pm, n}=\pm v_F\sqrt{2e\hbar Bn}$ (n is the Landau level index) is proportional to $\sqrt{B}$ rather than linear as found in other two-dimensional systems, causing new physics like the new form of the integer quantum Hall effect \cite{zhang2005experimental,novoselov2005two}. Precise measurements of these phenomena were achieved in transport experiments of graphene field effect devices where the Landau level filling is set by controlling the charge carrier density $\widetilde{n}$. Uniquely to graphene $\widetilde{n}$ can be continuously varied between electron and hole character of charge carriers.
+This magneto-phonon resonance in graphene and graphene like systems has been intensely studied over the last couple of years \cite{goler2012raman}. It was first observed in high quality quasi neutral multilayer graphene systems epitaxially grown on SiC \cite{faugeras2009tuning} and later on in decoupled surface layers of graphene on graphite crystals \cite{kuhne2012polarization,faugeras2011magneto,yan2010observation}. These systems have very narrow Landau levels, which allow for strong and sharp magneto-phonon band separation at resonances. Moreover the diverse inelastic light scattering on graphite show magneto-phonon resonance of the G-Band \cite{PhysRevLett.110.227402,kossacki2011electronic,PhysRevB.80.241404,yan2010observation}. Recently magneto-phonon resonance has been observed on single layer graphene exfoliated on SiO$_2$ \cite{PhysRevLett.110.227402,kossacki2012circular}.
 
-Recently the interactions in graphene are of particular interest\cite{kotov2012electron}. Specifically electron phonon interactions cause coupling of the long wavelength G-band optical phonon modes to magneto-exciton states, which are created by inter Landau level transitions between Landau levels with index $-n(-n-1)\rightarrow n+1(n)$ \cite{goerbig2007filling}. The coupling in this hybridized magneto phonon state is strongly enhanced by a resonant effect when the energy between two levels equals the energy of the optical phonon $\epsilon_G=196meV$. This magneto-phonon resonance effect has been observed as a series of anti-crossings in the G-band energy when the Landau level energy is tuned by a magnetic field\cite{ando2007magnetic,goerbig2007filling,goerbig2011electronic}.
+Due to its very high quality, graphene on SiC or graphite can be considered charge neutral. In contrast exfoliated graphene in SiO$_2$ typically shows intrinsic doping from sample preparation  and impurities in the substrate. The occupation of Landau levels due to this finite amount of charge is characterized by the filling factor $\nu = h\widetilde{n}/eB$ where $\widetilde{n}$ is the density of charges. Since current experiments on magneto-phonon resonance typically tune the magnetic field, the filling factor of the charged graphene sheet will change as well due field dependent degeneracy of the Landau levels. The magneto-phonon coupling depends not only on the magnetic field strength but also the filling factor \cite{goerbig2007filling}. In order to decouple these influences one can tune the number of charges at constant field in graphene embedded in a field effect device geometry. This technique has been widely applied in transport \cite{novoselov2004electric,novoselov2005two,zhang2005experimental} as well as Raman measurements \cite{pisana2007breakdown,yan2007electric,stampfer2007raman}. However it has currently not yet been applied to graphene in magnetic fields.
 
-The magneto-phonon resonance in graphene and graphene like systems has been intensely studied over the last couple of years \cite{goler2012raman}. Magneto-phonon resonance was first observed in high quality quasi neutral multilayer graphene systems epitaxially grown on SiC \cite{faugeras2009tuning} and later on in decoupled surface layers of graphene on graphite crystals \cite{kuhne2012polarization,faugeras2011magneto,yan2010observation}. These systems have very narrow Landau levels, which allow for strong and sharp magneto-phonon band separation at resonances. Moreover the diverse inelastic light scattering on graphite show magneto-phonon resonance of the G-Band \cite{PhysRevLett.110.227402,kossacki2011electronic,PhysRevB.80.241404,yan2010observation}. Recently magneto-phonon resonance has been observed on single layer graphene exfoliated on SiO$_2$ \cite{PhysRevLett.110.227402,kossacki2012circular}. Compared to multilayer graphene on SiC or graphene on graphite, monolayers on SiO$_2$ typically show higher amounts of scattering and intrinsic doping due to the roughness of the substrate as well as charged impurity dopants. In magnetic fields, the finite concentration of charge carriers can significantly influence the magneto-phonon resonance due to the filling factor dependence of the electron phonon coupling constants \cite{goerbig2007filling,goerbig2011electronic}. Indeed observations show a filling factor dependent structure \cite{PhysRevLett.110.227402,kossacki2012circular}, however so far the filling has not been used as a tunable parameter. 
-
-In this letter, we report on magneto Raman spectroscopy on single layer graphene on SiO$_2$ with tunable charge density. We demonstrate a lifting of the degeneracy of the G-band magneto-phonon signal for particular Landau level filling factors, far away from magnetic resonance, where the signal has mainly phonon character. To allow control of the charge carrier density by applying a backgate voltage, we fabricated field effect devices. Even at magnetic fields far away from magneto-phonon resonance, we observe the filling factor dependent shift of the two orthogonal magnetophonon states of the zero momentum $E_{2g}$ optical phonon. The Raman spectra are characterized by a pronounced splitting for filling factors $-6<\nu<6$. Numerical calculations of the phonon self-energy that describe the coupling of phonon and magneto-exciton states agree well with our observations. Moreover, we show how to continuously control the electron-phonon interaction strength by measuring the filling factor dependence of the coupled magneto-phonon states. 
+In this letter, we report on magneto Raman spectroscopy on single layer graphene on SiO$_2$ with tunable charge density. We verify in a controlled measurement the asymmetric filling factor dependence of the electron phonon coupling to different classes of Landau level transitions. As a result the degeneracy lifting of the two orthogonal, zero-momentum G-band magneto-phonon states for particular Landau level filling factors is demonstrated. Previous studies regarding magneto-phonons in graphene have focused on magnetic field ranges where the Ladnau level transition energy is resonant with the optical phonons and phonon and magneto excition states are strongly mixed. In contrast we observe far away from magnetic resonance where the signal has mainly phonon character. Here no particular transition is dominating the coupling and several inter and intra-band transitions have to be considered to account for the observed, pronounced splitting of the G-Band. We determine the electron-phonon coupling strength in magnetic fields which agrees well with the coupling constant at B=0T. Our data also suggests an observable influence of symmetric transitions that are not allowed by the magneto-phonon selection rules.
 
 \begin{figure}
     \includegraphics{images/setup}
-    \caption{\label{setup}a) Schematic view of the cryogenic Raman setup. Measurements are performed at $T=4K$ in He exchange gas. b)Optical image of a graphene field effect device. c) G-band Raman spectra at $B=12.6T$. Black spectrum taken at $V_{bg}=-20V, \nu=-4.7$. Red spectrum taken at $V_{bg}=-8V,\nu=-1.8$ shows visible splitting of the G-Band. Solid lines are two-peak Lorentzian fits}
+    \caption{\label{setup}a) Schematic view of the cryogenic Raman setup. Measurements are performed at $T=4K$ in He exchange gas. b)Optical image of a graphene field effect device. c) G-band Raman spectra at $B=12.6T$. Black spectrum taken at $V_{bg}=-20V, \nu=-4.7$. Red spectrum taken at $V_{bg}=-8V,\nu=-1.8$ shows visible splitting of the G-Band. Solid lines are double-peaked Lorentzian fits}
 \end{figure}
 
-Raman measurements are performed at 4K in a He bath cryostat in He exchange gas. Figure \ref{setup}a shows a schematic view of our experimental setup. The microscope insert is placed such that the sample is located in the center of a superconducting magnet with accessible magnetic field range of $B=\left\lbrace 0T,12.6T \right\rbrace$.
-For our experiments we fabricate field effect devices based on single layer graphene using standard microfabrication processes. For details of the fabrication methods see the supplementary material [link to supplementary material]. We confirm the single layer character by Raman spectroscopy and measurement of the optical contrast \cite{ferrari2006raman,casiraghi2007rayleigh,ni2007graphene,blake2007making}. Figure \ref{setup}b shows an optical image of our sample. It is placed in the focus of a confocal microscope on a piezo stage allowing for lateral and vertical movement. Raman spectra are taken using a HeNe Laser at $\lambda$=632.8nm with a diffraction limited spot size $\approx$ 1$\mu m$. The excitation laser is mostly linearly polarized however, we do not monitor or optimize the polarization. Scattered light is filtered by a long pass filter to remove the laser light and collected by a single mode fiber.
+To allow control of the charge carrier density by applying a backgate voltage, we fabricated field effect devices based on single layer graphene using standard microfabrication processes. We confirm the single layer character by Raman spectroscopy and measurement of the optical contrast \cite{ferrari2006raman,casiraghi2007rayleigh,ni2007graphene,blake2007making}. Figure \ref{setup}b shows an optical image of our sample.
 
-Due to the field effect device geometry we are able to continuously control the density $\widetilde{n}$ of charge carriers in the graphene layer by applying a backgate voltage $V_{bg}$. As can be seen in figure \ref{setup}c, we observe a gate voltage dependent splitting of the Raman G-Band in a finite magnetic field. For $B=12.6T$ the Raman line is symmetric for $V_{bg}=-20V$ (black line), but splits into 2 peaks for $V_{bg}=-8V$ due to the interaction of the optical phonons with the discrete Landau levels. We reported on the existence of this splitting elsewhere \cite{kias2009} and present here for the first time a full explanation in terms of the phonon-magnetoexciton coupling.
+Raman measurements are performed at 4K in a He bath cryostat, schematically drawn in Figure \ref{setup}a. The sample is mounted on top of a piezo electric x-y-z stage and placed in the focus of a confocal microscope. Microscope and stage are mounted in a vacuum tube that is filled with low pressure He exchange gas. The tube with the microscope is then inserted in the cryostat such thatthe sample is located in the center of a superconducting magnet. The accessible range of magnetic field is $B=\left\lbrace 0T,12.6T \right\rbrace$.
+Raman spectra are taken using a HeNe Laser at $\lambda$=632.8nm with a diffraction limited spot size $\approx$ 1$\mu m$. The excitation laser is mostly linearly polarized however, we do not monitor or optimize the polarization. Scattered light is filtered by a long pass filter to remove the laser light, collected by a single mode fiber and analyzed using a conventional grating spectrometer. 
+
+In the field effect device geometry we are able to continuously control the density $\widetilde{n}$ of charge carriers in the graphene layer by applying a backgate voltage $V_{bg}$. This is in contrast to previous experiments which typically change the Landau level energy by changing the magnetic field strength. As can be seen in figure \ref{setup}c, we observe a gate voltage dependent splitting of the Raman G-Band in a finite magnetic field. For $B=12.6T$ the Raman line is symmetric for $V_{bg}=-20V$ (black line), but splits into 2 peaks for $V_{bg}=-8V$ due to the interaction of the optical phonons with the discrete Landau levels. We reported on the existence of this splitting elsewhere \cite{kias2009} and present here for the first time a full explanation in terms of the phonon-magnetoexciton coupling.
 
 For complete characterization of the splitting we performed Raman backgate sweeps in the range $V_{bg}=\left\lbrace -40V,40V \right\rbrace$ both at $B=0T$ as well as $B=12.6T$. Figure \ref{bcompare} shows a greyscale plot of the observed spectra as a function of $V_{bg}$.
-For $B=0$, shown in figure \ref{bcompare}a, the behavior of the G-Band as a function of the Fermi energy $E_F(\widetilde{n})$ is well understood: Due to a Kohn anomaly at the $\Gamma$ point of the phonon dispersion the energy of the G-band phonon increases with increasing $\left|E_F\right|$\cite{tsuneya2006anomaly,pisana2007breakdown,yan2007electric}, which we clearly observe in our data for $\left|V\right| > 0$. Moreover in the region $E_F<\hbar \omega_G/2$ the phonon decay into electron hole pairs is allowed. This additional decay channel broadens the spectral linewidth which explains the fuzzy region around $V\approx 0V$ in the greyscale image, figure \ref{bcompare}a. 
+For $B=0T$, shown in figure \ref{bcompare}a, the behavior of the G-Band as a function of the Fermi energy $E_F(\widetilde{n})$ is well understood: Due to a Kohn anomaly at the $\Gamma$ point of the phonon dispersion the energy of the G-band phonon increases with increasing $\left|E_F\right|$\cite{tsuneya2006anomaly,pisana2007breakdown,yan2007electric}, which we clearly observe in our data for $\left|V\right| > 0$. Moreover in the region $E_F<\hbar \omega_G/2$ the phonon decay into electron hole pairs is allowed. This additional decay channel broadens the spectral linewidth which explains the fuzzy region around $V\approx 0V$ in the greyscale image, figure \ref{bcompare}a. 
 
 Figure \ref{bcompare}b shows the fundamentally different behavior for $B=12.6T$. The splitting of the G-band emerges around $V_{bg} \approx -20V$, reaches a maximum at $V_{bg} \approx -8V$ and disappears at $V_{bg} = 0V$ and repeats symmetrically for $V_{bg}>0V$. The largest magnitude of the splitting is $\approx 12cm^{-1}$. This is small compared to G-Band shifts $>50cm^{-1}$ that have been observed on resonance in magneto-phonon Raman measurements.
 Indeed the magnetic field strength $B=12.6T$ where the gatesweep was performed is located far away from points where MPR is expected and observed. The nearest resonances are due to the transitions $\left|n\right|=0 \rightarrow \left|n\right|=1$ at $B=25T$ and $\left|n\right|=1 \rightarrow \left|n\right|=2$ at $B=4.1T$.  
@@ -108,47 +72,52 @@ Indeed the magnetic field strength $B=12.6T$ where the gatesweep was performed i
     \caption{\label{bcompare} Greyscale plot of the G-Band Raman spectra as a function of applied backgate voltage. Measurements for $B=0T$ are shown on the left. Due to the phonon anomaly in graphene the G-band frequency redshifts towards V=0V. For $B=12.6T$, shown on the right, a clear splitting is visible for voltages $\left|V\right|\leq 20V$}
 \end{figure}
 
-Following ref. \cite{goerbig2007filling,kossacki2012circular} we calculate the phonon frequency shifts due to coupling of the optical phonons to magnetoexciton transitions. 
-Magnetoexciton transitions couple to circular polarized superposition $u^+$ and $u^-$ of the degenerate LO and TO modes of the $E_{2g}$ phonon. The interaction obeys the selection rules  $\Delta\left|n\right|=\pm 1$ in the Landau level index $n$. The right circular polarized phonon $u^+$ couples to the $-n\rightarrow n+1$ magnetoexciton state and the left circular polarized phonon $u^-$ to the $-(n+1)\rightarrow n$ magnetoexciton state.  
-The energy $\varepsilon_{\pm}$ of the coupled magneto phonon states are determined from the equation for the poles of the phonon Greens function \cite{goerbig2007filling,ando2007magnetic,kossacki2012circular}. We use the approximation that far away from resonance the shifts of the phonon energy are small and the energy shift $\varepsilon_{\pm} - \varepsilon_0$  is given by
+We calculate the phonon frequency shifts due to coupling of the optical phonons to magnetoexciton transitions. 
+Magnetoexciton transitions couple to circular polarized superposition $u^+$ and $u^-$ of the degenerate LO and TO modes of the G-band phonon. By symmetry allowed transitions obey the selection rule  $\Delta\left|n\right|=\pm 1$ in the Landau level index $n$. Due to conservation of angular momentum the right circular polarized phonon $u^+$ couples to the $-n\rightarrow n+1$ magnetoexciton state and the left circular polarized phonon $u^-$ to the $-(n+1)\rightarrow n$ magnetoexciton state. Recently magneto-phonon resonance experiments demonstrate selective excitation of the orthogonal states using a cross circular polarized experimental configuration\cite{PhysRevLett.110.227402,kossacki2012circular}.
+In contrast with these observations we excite both magneto-phonon states simultaneously using linear polarized light. 
+
+The energy $\varepsilon_{\pm}$ of the coupled magneto phonon states are determined from the equation for the poles of the phonon Greens function \cite{goerbig2007filling,ando2007magnetic,kossacki2012circular}. As we observe far away from resonance the G-Band shift $\Delta\varepsilon_{\pm} = \varepsilon_{\pm} - \varepsilon_0$ can be approximated by evaluation of the phonon self energy at the unperturbed phonon frequency, given by:
 
 \begin{eqnarray}
 \label{greens}
-\Delta\varepsilon_{\pm} &=& \mathrm{Re}\left\lbrace \lambda T_0^2 \left[ \sum_{n=n_F}^N\left(\frac{f_{\pm}\left(\nu\right) T_n}{\left(\varepsilon_{\pm}+i\delta\right)^2-T_n^2}-\frac{1}{T_n}\right)\right.\right.\nonumber \\
-& &\left.\left. +\sum_{\substack{n=n_F\\ (\neq 0,-1)}}^{n_F+1}\frac{f_{\pm}\left(\nu\right) S_n}{\left(\varepsilon_{\pm}+i\delta\right)^2-S_n^2}\right]\right\rbrace
+\Delta\varepsilon_{\pm} &=& \mathrm{Re}\left\lbrace \lambda T_0^2 \left[ \sum_{n=0}^N\left(\frac{f_{\pm,n}\left(\nu\right) T_n}{\left(\varepsilon_{\pm}+i\delta\right)^2-T_n^2}-\frac{1}{T_n}\right)\right.\right.\nonumber \\
+& &\left.\left. +\sum_{n=1}^{N}\frac{f_{\pm,n}\left(\nu\right) S_n}{\left(\varepsilon_{\pm}+i\delta\right)^2-S_n^2}\right]\right\rbrace
 \end{eqnarray}
-Here $\varepsilon_0$ is the unperturbed phonon energy. $\lambda$ is the dimensionless electron phonon coupling parameter and $\delta$ is the phenomenological broadening introduced by Ando\cite{ando2007magnetic}. We include coupling to interband transitions with energy $T_n=T_0\left(\sqrt{n+1}+\sqrt{n}\right)$ and intraband transitions $S_n=T_0\left(\sqrt{n+1}-\sqrt{n}\right)$ where $T_0=v_F\sqrt{2e\hbar B}$. They obey the selection rule $\Delta\left|n\right|=\pm 1$ and we schematically show some of these transitions in figure \ref{bfield}b. $n_F$ marks the index of the highest fully occupied Landau level. The filling factor dependence of the coupling to the highly degenerate Landau level states is described by the factor $f_{\pm}$. For interband transitions it is defined by
+We introduced $\varepsilon_0$ as the unperturbed phonon energy. $\lambda$ is the dimensionless electron phonon coupling parameter and $\delta$ is the phenomenological broadening introduced by Ando\cite{ando2007magnetic}. We include coupling to interband transitions with energy $T_n=T_0\left(\sqrt{n+1}+\sqrt{n}\right)$ and intraband transitions $S_n=T_0\left(\sqrt{n+1}-\sqrt{n}\right)$ where $T_0=v_F\sqrt{2e\hbar B}$ taking account of the $\Delta\left|n\right|=\pm 1$ selection rule. The filling factor dependence of the coupling to the highly degenerate Landau level states is described by the factor $f_{\pm}$. For interband transitions it is defined by
 \begin{eqnarray}
-f_{+}&=&(1+\delta_{n,0})(\bar{\nu}_{-n}-\bar{\nu}_{+(n+1)})\nonumber\\
-f_{-}&=&(1+\delta_{n,0})(\bar{\nu}_{-(n+1)}-\bar{\nu}_{+n})
+\label{fterm}
+f_{+,n}&=&(1+\delta_{n,0})(\bar{\nu}_{-n}-\bar{\nu}_{+(n+1)})\nonumber\\
+f_{-,n}&=&(1+\delta_{n,0})(\bar{\nu}_{-(n+1)}-\bar{\nu}_{+n})
 \end{eqnarray}
-where $0<\bar{\nu}<1$ are the partial filling factors of the levels involved in the transition. The result for intraband transition is easily obtained by replacing the index $-n$ by $+n$ in the definition for $f_+$ and vice versa for $f_-$.
-If the system would be tuned into resonance between phonons and one of the transitions $T_n$ the solutions of equation(\ref{greens}) are dominated by one of the resonance terms and can be approximated by a coupled two-level model showing strong anticrossing of the coupled modes\cite{goerbig2007filling,PhysRevLett.110.227402}. However in the regime far away from resonances equation(\ref{greens}) leads only to small shifts of the phonon energy\cite{ando2007magnetic} (see supporting material for details).
-Moreover the relative strength of the orthogonal polarized magneto phonon components changes depending on the filling factor $\nu$ defined by $\nu = h\widetilde{n}/eB$. 
+where $0<\bar{\nu}<1$ are partial filling factors describing the percentage of filling of the levels involved in the transition. The fourfold spin and valley degeneracy is included in the definition of the coupling constant $\lambda$. Moreover the definition of $f_{\pm}$ for intraband transition is easily obtained by replacing the index $\mp n$ by $\pm n$. 
+
+We schematically visualized magneto-exciton transitions that couple to optical phonons in Fig. \ref{bfield}(a). We show the first contributing inter- and intraband transitions using red($\Delta n = +1$) and blue arrows($\Delta n = -1$). At any given magnetic field there exist a pair of transitions of same energy (e.g. T$_0$, T$_1$) contributing to one of the magneto-phonon states. However due to the selection rule, the $\Delta n = -1$ transition is always excited from a lower lying energy level than the corresponding $\Delta n = +1$ transition.  
+
 \begin{figure*}
     \includegraphics{images/fig3_alt}
-    \caption{\label{bfield} a) Numerical simulation of the magneto-phonon energy as a function of magnetic field strength $B=\left\lbrace 6T,15T \right\rbrace$ at density $\widetilde{n}=0.61\times 10^{12}cm^{-2}$ . Dashed vertical lines are placed at $\nu=2,4$. Red line: phonons coupling to the $\Delta\left|n\right|= + 1$ transitions. Blue line: phonons coupling to $\Delta\left|n\right|= - 1$ transitions. Orange line: Filling factor $\nu$ b)Schematic view of the Landau level spectrum at B=12.6T. Filled states are colored orange. The red and blue arrows show transitions allowed by the selection rule $\Delta\left|n\right|= \pm 1$. Dashed arrows mark Pauli blocked transitions. c)Raman gatesweep at $B=12.6T$. The energy of the G-Band was extracted from two-peak Lorentz fits to Raman spectra. Vertical orange lines where placed at $\nu=-6,-2,0,2,6$ where the n=-1,0,1 levels are completely filled/depleted with charge carriers ($\nu=0$ - half filling of n=0 level). Red and blue curve are calculated magneto-phonon energies according to equation \ref{greens}}
+    \caption{\label{bfield} a)Schematic view of the Landau level spectrum at B=12.6T, filling factor $\nu=2$ and Landau level transitions participating in magneto-phonon coupling. Filled electronic states are highlighted using orange color. Red and blue arrows show transitions allowed by the selection rule $\Delta\left|n\right|= \pm 1$. Dashed arrows mark Pauli blocked transitions. b) Relative strength and filling factor dependence of individual terms of the phonon self energy. Terms describing interband transitions are shaded red, intraband transitions are shaded green  c)Position of the graphene G-band during a gatesweep at $B=12.6T$. The energy of the G-Band was extracted from two-peak Lorentz fits to Raman spectra. Vertical orange lines mark specific filling factors at $\nu=-6,-2,0,2,6$ where the n=-1,0,1 levels are completely filled/depleted with charge carriers ($\nu=0$ - half filling of n=0 level). The calculated magneto-phonon energies according to equation \ref{greens} are plotted as solid red($\Delta n = +1$) and solid blue($\Delta n = -1$) lines. Dashed lines include $\Delta n = 0$ transitions.}
 \end{figure*}
-For example figure \ref{bfield}a shows numerical results in magnetic field range $B=\left\lbrace 11,13T \right\rbrace$ where we perform experiments while we set charge carrier density to $\widetilde{n}=0.61cm^{-2}$. We use the values $\lambda=4.5\times 10^{-3}$ and $\delta=10meV$ as measured in recent magneto phonon resonance experiments on single layer graphene \cite{kossacki2012circular}. At the magnetic field where we performed gatesweep measurements $B=12.6T$ this value of $\widetilde{n}$ corresponds to a filling factor of $\nu=2$ meaning the $n=0$ level is completely occupied. The situation is sketched in fig \ref{bfield}b where filled Landau levels are highlighted in orange color. For $B<12.6T$ where the $n=0$ level is completely filled the $-1\rightarrow 0$ transition is Pauli blocked since $f_{+}=0$. As a result the effective coupling constant of the magnetophonons with energy $\varepsilon_{\pm}$ are different and the phonon spectrum splits into 2 separate lines.
-Recent measurements of magnetophonon resonance in single layer graphene on SiO$_2$ indeed observe this filling factor dependent coupling strength as well \cite{PhysRevLett.110.227402,kossacki2012circular}. While these experiments selectively excite the phonon modes using a cross circular polarized measurement configuration, we observe both components at the same time due to excitation with linear polarized laser light.
-Moreover the calculated splitting of $\approx 10cm^{-1}$ at $12.6T$ agrees well with our experimental observations.
+
+The filling factor dependent splitting between the phonon components $\varepsilon_{\pm}$ is created due to this asymmetry that is reflected in the factor $f_{\pm}$ in (\ref{greens}). For example in Fig. \ref{bfield}(a) we illustrate the level occupation for a filling factor $\nu=2$. Occupied electron states are highlighted using orange color. Here the n=0 level is completely filled (partial filling factor ($\bar{\nu}_0=1$) and there are no available states for transitions into this particular level. Since $f_{-,0}=0$ the transition between n=-1 and n=0 is Pauli blocked (dashed lines in figure). On the other hand all transitions originating from the n=0 level have maximum strength due to the high density of occupied states that can be excited. For example $f_{+,0}=1$ so the magneto-phonon coupling to the transition n=0 to n=+1 reaches its maximum strength. Other transitions are Pauli blocked as well, in particular the intraband transitions are not activated before reaching larger absolute values of $\left|\nu\right|>6$.
+
+Previous experiments report on charge carrier dependent magneto-phonon coupling in magnetic field sweep experiments without back gate control \cite{PhysRevLett.110.227402,kossacki2012circular}. There samples are either intrinsically doped from the fabrication process or treated by annealing or exposure to air and other gases. While this allows for very rough changes of the charge carrier density, the final density of charge can't be precisely controlled as in our experiment. Nevertheless different coupling strength of the orthogonal phonon states in magneto-phonon resonance are observed.
+
+The self energy in (\ref{greens}) involves all possible Landau level transitions coupling to optical phonons. However in magneto-phonon resonance the resonant term will dominate due to a small energy denominator. Therefore contributions of other transition can be neglected in good approximation. The experimental data is then well described by a model involving only two coupled states. In the non-resonant experiment this approximation is invalid and typically the coupling to many transition contributes to the phonon energy shift equally. 
+
+In order to understand the contributions of the significant inter and intraband transitions, we calculated the individual contributions to the phonon energy shift $\Delta\varepsilon$ based on (\ref{greens}) at B=12.6T.
+In figure \ref{bfield}(b) we plot the filling factor dependence and relative magnitude of the phonon energy shift due to the lowest lying inter and intraband transitions. Without restrictions to generality we only consider transitions with $\Delta n =+1$. The case of the opposite phonon polarization is completely symmetric relative to the point $\nu = 0$. Curves are labeled as T$_n$ (red shaded) for interband and S$_n$ (green shaded) for intraband transitions.  The strongest contribution is due to the (T$_0$,f$^+$) term which shows a strong peak, at $\nu=2$. In contrast other interband transitions span over several Landau levels and show maximum coupling on a plateau of width $\Delta\nu =8n$. The relative magnitude of the (T$_0$,f$^+$) term is increased due to the special structure of the n=0 Landau level that decouples the A and B sublattices. It is the origin of the $\delta_{n,0}$ term in (\ref{fterm}). Despite this increase in coupling strength the contribution to the remaining interband transition is strong as well. Shifts due to (T$_1$,f$^+$) are 28\% and (T$_2$,f$^+$) is still at 17.9\% relative to the shift caused by the T$_0$ term.
+The action of intraband terms are restricted to a smaller range of $\nu$ values, but their strength can be significant nevertheless (S$_1$/T$_0$ $\approx$ 10\%).
+
+Finally we put these contributions together and compare to our experimental data. We extracted the G-band position from double lorentzian fits to the experimental spectra. They are shown in Fig. \ref{bfield}(c) as a function the filling factor $\nu$, which was calculated from the set value of the backgate voltage using a capacitor model with dielectric SiO$_2$ layer of thickness d=300nm at constant magnetic field B=12.6T.
+The solid red and blue lines are the numerical results for the energies $\varepsilon_+$ and $\varepsilon_-$. We find that selecting $\lambda = 4.8\times 10^{-3}$, $\delta=10meV$ and $\varepsilon=1582.0cm^{-1}$ describe our data well. The Fermi velocity is chosen as $v_F = 1.10\times 10^6 ms^{-1}$ determined from the position of resonances in magneto-phonon resonance \cite{kossacki2012circular}. For simplicity we only included the first 5 terms of (\ref{greens}) in our calculation. The normal choice for the high energy cutoff would be N$_c\approx 450$ where the Landau level energy E$_{N_c} \sim t$ with the hopping energy t of graphene. Due to the plateau like structure of interband transitions including these terms would lead to a constant offset of $\approx -1cm^{-1}$ in the filling factor range of our measurement. The chosen system parameters not only agree well with previous experiments \cite{PhysRevLett.110.227402,kossacki2012circular} but also describe our measurement results at B=0T (following \cite{tsuneya2006anomaly}).
+
+The branching and turning points of the measurement data coincide well with the filling factors $\nu=\left\lbrace -6,2,0,2,6 \right\rbrace$ (at vertical orange lines). The splitting is maximal at $\nu=-2,2$ where the coupling strength to the T$_0$ transitions is strongest. As in Fig. \ref{bfield}(b) the splitting is peaked around its maximum. The onset of the T$_0$ at $\nu=-6,6$ agrees well with the onset of splitting seen in our data. We also observe a sudden difference in slope at $\nu=-6$ for $\varepsilon_-$ and $\nu=6$ for $\varepsilon_+$. These points coincide with the activation of the T$_1$ transitions with negative energy shifts. We attribute the energy difference between $\nu=-2,6$ (or $\nu=-6,2$) to the influence of intraband transitions. In particular the S$_1$ transitions shift the phonon energy towards higher values around $\nu=-6,+6$ compared to the energies at $\nu=+2,-2$ which is easily seen when comparing with Fig. \ref{bfield}(b). However we were not able to precicesly resolve the energies of the two magneto-phonon states when they are close together ($\nu=0$ and $\left|\nu\right|>6$). Higher spectral resolution would potentially also be able to see the small splitting of $\approx 1cm^{-1}$ for $\left|\nu\right|>6$.
+
+Our numerical calculations produce a more shallow slope of the low energy magneto-phonon component for $2 < \left|\nu\right| < 6$. Although the mismatch to the data is only small we believe that it might be caused due to the influence of symmetric transitions $\Delta n = 0$ which are strongly suppresed due to the symmetry of the graphene lattice \cite{PhysRevB.84.235138}. The transition between $n=-1$ and $n=1$ would be activated at the same filling factors $\nu=-6,6$ as the T$_1$ transitions that are responsible for the kinks in slope at these points. We included the effects of the first 5 $\Delta n = 0$ transitions using a coupling strength of $\lambda_{symm} =0.2\lambda$ shown as dashed lines in Fig. \ref{bfield}(c)
 
 
 
-We conclude that the splitting can be explained by magneto-phonon coupling at large detuning from the resonant condition. In difference to the experiments in \cite{PhysRevLett.110.227402,kossacki2012circular} we have complete, continuous control over the filling factor in our sample.  
 
-Next we would like to discuss the filling factor dependence of the G-band fine structure. In order to compare our data with our numerical calculation we extracted the G-band position from lorentzian fits to the experimental spectra. Figure \ref{gpos} shows the extracted Ramanshifts as a function of the filling factor $\nu$, which is uniquely determined by the value of the backgate voltage given the thickness d=300nm of the dielectric SiO$_2$ layer. 
-
-
-The solid lines are the numerical results for the filling factor dependent energies $\varepsilon_+$ (blue) $\varepsilon_-$ (red) for constant magnetic. We adjusted the parameters $\lambda$, $\delta$ and the Fermi velocity $v_F$ to fit our measurement data. For determining the dimensionless coupling strength $\lambda$ we independently adjust a linear fit to the describe the $E_{2g}$ phonon energy at zero magnetic field. For large Fermi energies the phonon energy shift is given by $\Delta \varepsilon_G\left(B=0T\right) = \lambda E_F$. We obtain a value of $\lambda = 4.8\times 10^{-3}$ and refer to the supplementary information for more details on $B=0T$ experiments.
-We set the broadening parameter $\delta=10meV$. This value is consistent with recent magnetophonon resonance measurements \cite{kossacki2012circular}, but for any choice of $\delta < 20meV$ we find that the phonon energies are not significantly changed, whereas changes in $\lambda$ and $v_F$ have a much stronger influence.
-Finally in order to correctly describe the size of the maximal, observed splitting we have to set $v_F = 1.13\times 10^6 ms^{-1}$ which is only slightly higher than previously reported values \cite{kossacki2012circular}.  
-
-The branching and turning points of the measurment data coincide well with the filling factors $\nu=\left\lbrace -6,2,0,2,6 \right\rbrace$ which are marked by vertical orange lines in figure \ref{gpos}. The major contribution to the phonon energy shift at $B=12.6T$ is due to the coupling to the transitions $-1\rightarrow 0$ and $0\rightarrow -1$ and the highlighted $\nu$ values mark the beginning and ends of the $n=-1,0,1$ Landau levels.
-For $\nu < 6$ levels $n < -1$ are completely depleted and all transitions involving the n=0 level are Pauli blocked. The experiment shows no observable splitting in this regime. However theoretically for any filling factor $\nu \neq 0$ there exists an asymmetry of the coupling strength for the orthogonal magentophonon states \cite{kossacki2012circular}. The splitting caused by this mismatch $\approx 1cm^{-1}$ while being visible in our numerical data (gap between the red and blue lines) couldn't be observed experimentally due to the limits of the spectral resolution of our experimental setup.  
-
-When the charge carrier density $\widetilde{n}$ is increased so $-6<\nu<-2$ the $n=-1$ level is partially filled increasing the effective coupling strength of the phonon coupling to the $-1\rightarrow 0$ magnetoexciton. Due to the coupling the energy of this magnetophonon strongly blue shifts. The activation of the $-1\rightarrow 0$ transition at $\nu = -6$ coincides well with the branching point where splitting is observed.
-The largest effective coupling to the $-1\rightarrow 0$ transition  occurs at $\nu =-2$, when the $n=-1$ level is completely filled. Coincidentally we observe the maximum splitting at the same filling factor. Further increasing $\nu$ fills the $n=0$ level, successively blocks the $-1\rightarrow 0$ transition while the previously blocked $0\rightarrow 1$ transition is activated. At $\nu=0$ where the $n=0$ level is half filled the coupling strength are equal. As expected the progression for $\nu>0$ is symmetric to $\nu<0$.
 
 To summarize we observed a fine structure of the $E_{2g}$ optical phonon in single layer graphene at a magnetic field B=12.6T. We show that the splitting is caused by phonon magnetoexciton coupling in the non-resonant regime. By changing the charge carrier density we control the effective filling factor dependent coupling strength of the orthogonal magnetophonon states. The characteristic filling factor dependence of the coupling is in good agreement with numerical calculations and we were able to measure the coupling strength, broadening and Fermi velocity. 
 \\
@@ -162,26 +131,7 @@ We would like to thank Mark Goerbig and Alexander Kitt for discussions. We thank
 %$$\mbox{put long equation here}$$
 %\end{widetext}
 
-% Figures should be put into the text as floats. 
-% Use the graphics or graphicx packages (distributed with LaTeX2e).
-% See the LaTeX Graphics Companion by Michel Goosens, Sebastian Rahtz, and Frank Mittelbach for examples. 
-%
-% Here is an example of the general form of a figure:
-% Fill in the caption in the braces of the \caption{} command. 
-% Put the label that you will use with \ref{} command in the braces of the \label{} command.
-%
-% \begin{figure}
-% \includegraphics{}%
-% \caption{\label{}}%
-% \end{figure}
 
-% Tables may be be put in the text as floats.
-% Here is an example of the general form of a table:
-% Fill in the caption in the braces of the \caption{} command. Put the label
-% that you will use with \ref{} command in the braces of the \label{} command.
-% Insert the column specifiers (l, r, c, d, etc.) in the empty braces of the
-% \begin{tabular}{} command.
-%
 % \begin{table}
 % \caption{\label{} }
 % \begin{tabular}{}

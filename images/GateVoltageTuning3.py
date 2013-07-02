@@ -1,14 +1,15 @@
 from numpy import *
 from scipy import *
 from pylab import *
-import MagnetoPhononC as M
+import MagnetoPhononD as M
 import scipy.optimize as s
 import sys
 import transport as t
 reload(M)
-"""
-fig_size = [8.0,6.0]
-params = {'backend': 'WXAgg','axes.labelsize': 20,'font.size': 15,'legend.fontsize': 15,'xtick.labelsize': 15,'ytick.labelsize': 15, 'text.usetex': False,'figure.figsize': fig_size}
+
+fig_size = [3.0,2.5]
+#fig_size =[5.0,3.75]
+params = {'backend': 'WXAgg','axes.labelsize': 8,'font.size': 8,'legend.fontsize': 8,'xtick.labelsize': 8,'ytick.labelsize': 8, 'text.usetex': False,'figure.figsize': fig_size}
 rcParams.update(params)
 """
 fig_width_pt = 246.0  # Get this from LaTeX using \showthe\columnwidth
@@ -19,7 +20,7 @@ fig_height =fig_width*golden_mean       # height in inches
 fig_size = [fig_width,fig_height]
 params = {'backend': 'GTKAgg','axes.labelsize': 8,'font.size': 8,'legend.fontsize': 8,'xtick.labelsize': 8,'ytick.labelsize': 8, 'text.usetex': False,'figure.figsize': fig_size}
 rcParams.update(params)
-
+"""
 #rapidly plot simulation over simulated gatesweep data
 try:
     delta = double(sys.argv[1])
@@ -30,10 +31,12 @@ try:
     e0 = M.convert(shift0,2)
     B = double(sys.argv[8])
     vF = double(sys.argv[9])
+    l2 = double(sys.argv[10])
 except:
     print 'Usage: ', sys.argv[0], ' delta l shift0 cutoff n-low n-high n-step B vF'
     sys.exit(1)
 width = 0.001
+savedir = './'
 
 #----------------------------------------------------------------
 FitDataPath='C:/Users/Owner/research/graphene/graphene_hf/results/2009_MagnetoPhonons_121/EXP20090309_121_raman-12_6T-Fit_DoubleLorentz_Intraband.txt'
@@ -50,35 +53,60 @@ my_temp = zeros(len(mask1))
 for i in range(len(mask1)): my_temp[i] = Voltage[mask1[i]]
 Voltage = my_temp
 #----------------------------------------------------------------
-SolPlus = []
-SolMinus = []
-for n in nrange:
-    #x1 = s.fsolve(M.FPlus,[e0,width],args=(n,l,e0,B,delta,cutoff))
-    #x2 = s.fsolve(M.FMinus,[e0,width],args=(n,l,e0,B,delta,cutoff))
-    x1 = M.FPlus(e0,n,l,e0,B,delta,cutoff,vF)
-    x2 = M.FMinus(e0,n,l,e0,B,delta,cutoff,vF)
-    print n,'|',x1,'|',x2
-    SolPlus.append(x1)
-    SolMinus.append(x2)
-SolPlus = array(SolPlus)
-SolMinus = array(SolMinus)
+SolPlus = M.FPlus(e0,nrange,l,e0,B,delta,cutoff,vF,l2)
+SolMinus = M.FMinus(e0,nrange,l,e0,B,delta,cutoff,vF,l2)
+
+SolPlusAllowed = M.FPlus(e0,nrange,l,e0,B,delta,cutoff,vF,0.0)
+SolMinusAllowed = M.FMinus(e0,nrange,l,e0,B,delta,cutoff,vF,0.0)
+
 #-------------------------------------------------------------------
-figure(1)
+f,ax=subplots()
 
-plot(M.FillingFactor(t.Gate2Density(Voltage-2.5,300),B),FitData[:,1],'o',color='0.4',ms=4)
-plot(M.FillingFactor(t.Gate2Density(Voltage-2.5,300),B),FitData[:,4],'o',color='0.4',ms=4)
-plot(M.FillingFactor(nrange,B),M.convert(SolPlus.real+e0,1),linestyle='-',color='red',lw=3)
-plot(M.FillingFactor(nrange,B),M.convert(SolMinus.real+e0,1),'-',color='blue',lw=3)
-xlim((-10,10))
+ax.plot(M.FillingFactor(t.Gate2Density(Voltage-2.5,300),B),FitData[:,1],'o',color='0.4',ms=6)
+ax.plot(M.FillingFactor(t.Gate2Density(Voltage-2.5,300),B),FitData[:,4],'o',color='0.4',ms=6)
+ax.plot(M.FillingFactor(nrange,B),M.convert(SolPlus.real+e0,1),linestyle='-',color='red',lw=3)
+ax.plot(M.FillingFactor(nrange,B),M.convert(SolMinus.real+e0,1),'-',color='blue',lw=3)
 
-vlines([-6,-2,0,2,6],1582,1600,linestyle='-',color='orange',lw=3)
 
-ylim((1582,1600))
-xlabel('FillingFactor')
-ylabel('Ramanshift(cm$^{-1}$)')
-tight_layout()
-savefig('GateVoltageTuning2.png',dpi=1000)
 
+ax.set_xlim((-10,10))
+ax.set_xticks([-10,-6,-2,2,6,10])
+
+ax.vlines([-6,-2,0,2,6],1582,1600,linestyle='-',color='orange',lw=3)
+
+ax.set_ylim((1582,1600))
+ax.set_xlabel('FillingFactor')
+ax.set_ylabel('Ramanshift(cm$^{-1}$)')
+f.tight_layout()
+f.savefig(savedir+'GateVoltageTuning-POSITION.png',dpi=300)
+
+ax.fill_between(M.FillingFactor(nrange,B),M.convert(SolPlus.real+e0,1),M.convert(SolPlusAllowed.real+e0,1),facecolor='red',alpha=0.5)
+ax.fill_between(M.FillingFactor(nrange,B),M.convert(SolMinus.real+e0,1),M.convert(SolMinusAllowed.real+e0,1),facecolor='blue',alpha=0.5)
+f.savefig(savedir+'GateVoltageTuning-POSITION-SymmetricTransitions.png',dpi=300)
+
+f2,ax2=subplots()
+
+ax2.plot(M.FillingFactor(t.Gate2Density(Voltage-2.5,300),B),FitData[:,1],'o',color='0.4',ms=6)
+ax2.plot(M.FillingFactor(t.Gate2Density(Voltage-2.5,300),B),FitData[:,4],'o',color='0.4',ms=6)
+ax2.plot(M.FillingFactor(nrange,B),M.convert(SolPlusAllowed.real+e0,1),linestyle='-',color='red',lw=3)
+ax2.plot(M.FillingFactor(nrange,B),M.convert(SolMinusAllowed.real+e0,1),'-',color='blue',lw=3)
+
+ax2.plot(M.FillingFactor(nrange,B),M.convert(SolPlus.real+e0,1),linestyle='--',color='red',lw=2)
+ax2.plot(M.FillingFactor(nrange,B),M.convert(SolMinus.real+e0,1),'--',color='blue',lw=2)
+
+
+ax2.set_xlim((-10,10))
+ax2.set_xticks([-10,-6,-2,2,6,10])
+
+ax2.vlines([-6,-2,0,2,6],1582,1600,linestyle='-',color='orange',lw=3)
+
+ax2.set_ylim((1582,1600))
+ax2.set_xlabel('FillingFactor')
+ax2.set_ylabel('Ramanshift(cm$^{-1}$)')
+f2.tight_layout()
+f2.savefig(savedir+'GateVoltageTuning-POSITION-NO-Symmetric-transitions.png',dpi=300)
+
+"""
 figure(2)
 plot(M.FillingFactor(t.Gate2Density(Voltage-2.5,300),B),FitData[:,2],'o',color='0.4',ms=4)
 plot(M.FillingFactor(t.Gate2Density(Voltage-2.5,300),B),FitData[:,5],'o',color='0.4',ms=4)
@@ -90,5 +118,5 @@ ylim((6,18))
 xlabel('FillingFactor')
 ylabel('FWHM(cm$^{-1}$)')
 tight_layout()
-
+"""
 show()
