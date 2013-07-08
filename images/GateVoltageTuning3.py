@@ -60,6 +60,7 @@ SolPlusAllowed = M.FPlus(e0,nrange,l,e0,B,delta,cutoff,vF,0.0)
 SolMinusAllowed = M.FMinus(e0,nrange,l,e0,B,delta,cutoff,vF,0.0)
 
 #-------------------------------------------------------------------
+
 f,ax=subplots()
 
 ax.plot(M.FillingFactor(t.Gate2Density(Voltage-2.5,300),B),FitData[:,1],'o',color='0.4',ms=6)
@@ -106,17 +107,22 @@ ax2.set_ylabel('Ramanshift(cm$^{-1}$)')
 f2.tight_layout()
 f2.savefig(savedir+'GateVoltageTuning-POSITION-NO-Symmetric-transitions.png',dpi=300)
 
-"""
-figure(2)
-plot(M.FillingFactor(t.Gate2Density(Voltage-2.5,300),B),FitData[:,2],'o',color='0.4',ms=4)
-plot(M.FillingFactor(t.Gate2Density(Voltage-2.5,300),B),FitData[:,5],'o',color='0.4',ms=4)
-plot(M.FillingFactor(nrange,B),(2*abs(M.convert(SolPlus.imag,1)))+7,'-',color='red',lw=4)
-plot(M.FillingFactor(nrange,B),(2*abs(M.convert(SolMinus.imag,1)))+7,'-',color='blue',lw=4)
-vlines([-6,-2,0,2,6],6,18,linestyle='-',color='orange',lw=3)
-xlim((-10,10))
-ylim((6,18))
-xlabel('FillingFactor')
-ylabel('FWHM(cm$^{-1}$)')
-tight_layout()
-"""
+fig_size = [3.4*0.5,3.4*0.5]
+params = {'backend': 'WXAgg','axes.labelsize': 10,'font.size': 10,'legend.fontsize': 10,'xtick.labelsize': 10,'ytick.labelsize': 10, 'text.usetex': False,'figure.figsize': fig_size}
+rcParams.update(params)
+
+f3,ax3=subplots()
+
+ax3.plot(Voltage-2.5,FitData[:,1],'o',color='0.4',ms=6)
+ax3.plot(Voltage-2.5,FitData[:,4],'o',color='0.4',ms=6)
+ax3.set_xlim((-40,40))
+ax3.set_ylim((1580,1602))
+ax3.set_xticks([-40,-20,0.0,20,40])
+ax3.set_yticks([1580,1584,1588,1592,1596,1600])
+ax3.set_xlabel('Gatevoltage(V)')
+ax3.set_ylabel('Ramanshift(cm$^{-1}$)')
+f3.tight_layout()
+f3.savefig(savedir+'GateVoltageTuning-FitData.png',dpi=300)
+
+
 show()
