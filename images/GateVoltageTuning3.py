@@ -99,7 +99,8 @@ ax2.plot(M.FillingFactor(nrange,B),M.convert(SolMinus.real+e0,1),'--',color='blu
 ax2.set_xlim((-10,10))
 ax2.set_xticks([-10,-6,-2,2,6,10])
 
-ax2.vlines([-6,-2,0,2,6],1582,1600,linestyle='-',color='orange',lw=3)
+ax2.vlines([-6,-2,2,6],1582,1600,linestyle='-',color='orange',lw=3)
+ax2.vlines(0,1582,1600,linestyle='--',color='orange',lw=3)
 
 ax2.set_ylim((1582,1600))
 ax2.set_xlabel('FillingFactor')
