@@ -10,7 +10,7 @@ fig_width_pt = 246.0  # Get this from LaTeX using \showthe\columnwidth
 inches_per_pt = 3.4/246.0               # Convert pt to inches
 golden_mean = (sqrt(5)-1.0)/2.0         # Aesthetic ratio
 fig_width = 0.5*fig_width_pt*inches_per_pt  # width in inches
-fig_height =fig_width*1.5      # height in inches
+fig_height =fig_width*2      # height in inches
 fig_size = [fig_width,fig_height]
 params = {'backend': 'GTKAgg','axes.labelsize': 12,'font.size': 12,'legend.fontsize': 10,'xtick.labelsize': 12,'ytick.labelsize': 12, 'text.usetex': False,'figure.figsize': fig_size}
 rcParams.update(params)
@@ -74,10 +74,10 @@ r.PlotDoubleLorentz(ax,xfit,p1,'2','black')
 r.PlotDoubleLorentz(ax,xfit,p2,'2')
 
 
-ax.set_xlabel('Ramanshift(cm$^{-1}$)')
+ax.set_xlabel('Raman shift(cm$^{-1}$)')
 ax.set_ylabel('Intensity(a.u.)')
 ax.xaxis.set_ticks([1560,1580,1600,1620])
-legend(['V=-20V','V=-8V'],loc=2,bbox_to_anchor=(0.52,1.15))
+
 f.tight_layout()
 f.savefig('rawdata.png',dpi=1000)
 show()

@@ -14,7 +14,7 @@
 
 \begin{document}
 
-\title{Electrostatic control of magnetophonons in Graphene} %Title of paper
+\title{Charge tuning of non-resonant magneto-exciton phonon interactions in graphene} %Title of paper
 
 \author{Sebastian R\'{e}mi}
 \affiliation{Boston University, Department of Physics, 590 Commonwealth Ave, Boston, MA 02215}
@@ -154,7 +154,7 @@ Finally we select $\delta_0$=FWHM$_{min}$, the width of the G-band far away from
 
 \begin{figure}[!ht]
    \includegraphics[width=0.9\columnwidth]{suppl_images/ando-fit-ext}
-   \caption{\label{ando-fit-ext}G-band position and FWHM and fit results using the Ando model Eqn.\,(\ref{ando-shift}).(a) $B=0\; T$. Black line: no inhomogeneous broadening. Red line: $\delta n = 0.3\times 10^{12}\; cm^{-1}$.(b)$B=0\; T$ for different parameter values (see text). (c) $B=12.6\; T$ with same parameter values as in (b).Thick blue and red lines are the numerical solutions for $\circlearrowleft$ and $\circlearrowright$ transitions including the effects of symmetric transitions. Shaded blue and red regions illustrate shift when not including symmetric transitions}
+   \caption{\label{ando-fit-ext}G-band position and FWHM and fit results using the Ando model Eqn.\,(\ref{ando-shift}).(a) $B=0\; T$. Black line: no inhomogeneous broadening. Red line: $\delta n = 0.3\times 10^{12}\; cm^{-1}$.(b)$B=0\; T$ for different parameter values (see text). (c) $B=12.6\; T$ with same parameter values as in (b).Thick blue and red lines are the numerical solutions for $\sigma^-$ and $\sigma^+$ transitions including the effects of symmetric transitions. Shaded blue and red regions illustrate shift when not including symmetric transitions}
 \end{figure}
 
 We present fitresults in Fig.\,\ref{ando-fit-ext}(a). The fitparameters are: $\lambda = 4.8\times 10^{-3}$, $\delta = 10meV$, $\delta_0=5.5\; cm^{-1}$, $\varepsilon_0 = 1582\; cm^{-1}$, $\delta n = 0.3\times 10^{12}\; cm^{-2}$. We show both numerical results not-including (solid black lines) and results including inhomogeneous broadening (red dashed lines).
@@ -170,11 +170,11 @@ The precision in measuring the system parameters could be increased by higher S/
 
 \newpage
 \section{Transition weights}
-The filling factor dependence of the electron-phonon coupling strength related to a particular LL transition is described by the functions f$_{\mathcal{A},n}$ for both orthogonal circular polarized phonon channels $\mathcal{A}=\circlearrowleft, \circlearrowright$. For convenience we are presenting a graphical representation of f$_{\mathcal{A},n}$ in Fig. \ref{f-factor}.  
+The filling factor dependence of the electron-phonon coupling strength related to a particular LL transition is described by the functions f$_{\mathcal{A},n}$ for both orthogonal circular polarized phonon channels $\mathcal{A}=\sigma^-, \sigma^+$. For convenience we are presenting a graphical representation of f$_{\mathcal{A},n}$ in Fig. \ref{f-factor}.  
 
 \begin{figure}[h!]
    \includegraphics[width=0.9\columnwidth]{suppl_images/f-factor}
-   \caption{\label{f-factor}Graphical representation of transition weights f$_{\mathcal{A},n}$ for $\Delta n =\pm 1$ inter (a,c) and intraband (b,d) transitions. (a,b) $\circlearrowright$ polarization, (c,d) $\circlearrowleft$ polarization.}
+   \caption{\label{f-factor}Graphical representation of transition weights f$_{\mathcal{A},n}$ for $\Delta n =\pm 1$ inter (a,c) and intraband (b,d) transitions. (a,b) $\sigma^+$ polarization, (c,d) $\sigma^-$ polarization.}
 \end{figure}
 
 \newpage
@@ -196,7 +196,7 @@ n &$T_n \left(\Delta\varepsilon_G / \lambda T_0 \right)$ & $S_n \left(\Delta\var
 
 
 \newpage
-\section{Cutoff}
+\section{High Energy cutoff}
 
 The origin of kinks and splittings in the magnetic field data becomes easily understandable when looking separately at the contributions of individual transitions to the G-band shift. We found that within the range of filling factors we observe, kinks and splitting in the data are related to the lowest lying transitions. For this reason we typically only include the 5 lowest terms in calculating the G-band shift at $B=12.6T$ and find good agreement to our data.    
 Theoretically the natural cutoff for transitions has to be selected where the actual dispersion of graphene deviates from the linear approximation around the K and K' points of the Brillouin zone \cite{goerbig2011electronic}. The energy of the LL at the cutoff is approximately given by E$_{N_c} \sim t$ where $t\approx 3eV$ is the nearest neighbor hopping energy. For $B=12.6T$ we find N$_c\approx 450$. Fig.\,\ref{cutoff} shows the effect of including transitions up to N$_c$ using otherwise identical parameters. The effect is an overall downshift of $\sim -1\; cm^{-1}$.  
@@ -206,9 +206,18 @@ Theoretically the natural cutoff for transitions has to be selected where the ac
    \caption{\label{cutoff}G-band splitting in magnetic field $B=12.6 \; T$. Experimental data: grey dots. Numerical simulation (red and blue lines) for high energy cutoff N$_c$=5 (a) and N$_c$=450 (b). Dashed lines are results including effects of symmetric transitions with $\lambda_s=0.2\lambda$.}
 \end{figure}
 
+\section{Coupling strength of previous studies}
+
+The parameter values determined from fitting to $B=0\: T$ data ($v_F=1.1\times 10^6\: ms^{-1}$, $\lambda=4.8\times 10^{-3}$, neglecting charge inhomogeneous broadening) describe the $B=12.6\: T$ data well. In addition the parameter values agree with those determined in previous experiments. A high Fermi velocity has been observed on graphene on SiO$_2$ ($1.08-1.10\times 10^6\: m/s$) \cite{PhysRevLett.110.227402,kossacki2012circular} while the Fermi velocity for graphene on graphite and SiC layers is in the range  of $1.02-1.04\times 10^6\: m/s$ \cite{faugeras2009tuning,kuhne2012polarization}. It has been suggested that the Fermi velocity depends strongly on screening due to electron-electron interactions \cite{hwang2012fermi}. This could explain the systematic difference in $v_F$ between graphene on different substrates, although \cite{hwang2012fermi} predicts $v_F$ of graphene on SiO$_2$ to be smaller than $v_F$ of graphene on SiC.
+
+To compare $\lambda$ with earlier work, we recall that $\lambda$ is related to the coupling factor $g$ used e.g. in \cite{yan2010observation,PhysRevLett.110.227402} by $g^2=(\lambda T_0^2/2) f_{\mathcal{A},n}$.  We note that  the value of $g$ will depend on both $v_F$ and the magneto-phonon resonance in question via $T_0$, as well as $\widetilde{n}$ via $f_{\mathcal{A},n}$.
+The electron-phonon coupling strength $\lambda=4.8\times 10^{-3}$ determined by us,
+would result in $g=78.8\: cm^{-1}$  ($ g/\sqrt{B_{0,r}})=15.8 \:  cm^{-1}/T^{1/2}$, $B_{n,r}$ being the resonant field for transition $T_n$) at the $T_0$ resonance, and  $ g=32\: cm^{-1}$ ($ g/\sqrt{B_{1,r}}=15.8\: cm^{-1}/T^{1/2}$) at the $T_1$ resonance using $v_F=1.1\times 10^6\: ms^{-1}$ for a charge neutral sample. For graphene on SiO$_2$  in \cite{PhysRevLett.110.227402}, the reported value is nearly identical;  $ g=17\: cm^{-1}/T^{1/2}$ ($\sigma^+$ polarization, $\widetilde{n}=0.4\times 10^{12}\: cm^{-2}$). However for the more pristine sample of  graphene on graphite \cite{yan2010observation} $\lambda= 6.2 \times 10^{-3}$, a $23\%$ higher value. Again, the values seems to be affected by the substrate.
 
 
- 
+\section{Coupling to symmetry forbidden transitions}
+
+ The model calculations show a more shallow slope of the low energy magneto-phonon component than the data for $2 < \left|\nu\right| < 6$. A possible cause could be coupling to symmetric transitions $\Delta n = 0$ which are strongly suppressed due to the symmetry of the graphene lattice \cite{PhysRevB.84.235138}. Hybridization of $\Delta n =0$ transition and optical phonons were observed in decoupled graphene layers on natural graphite \cite{faugeras2011magneto,kuhne2012polarization} with a coupling strength of almost 20\% of $\lambda$. We include the effects of the first five $\Delta n = 0$ transitions by adding resonance terms with a similarly reduced coupling strength, $\lambda_{symm} =0.2\lambda$. The results are shown as dashed lines in Fig.\,\ref{cutoff}.
 
 % If in two-column mode, this environment will change to single-column format so that long equations can be displayed. 
 % Use only when necessary.

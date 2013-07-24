@@ -92,19 +92,25 @@ ax2.plot(M.FillingFactor(t.Gate2Density(Voltage-2.5,300),B),FitData[:,4],'o',col
 ax2.plot(M.FillingFactor(nrange,B),M.convert(SolPlusAllowed.real+e0,1),linestyle='-',color='red',lw=3)
 ax2.plot(M.FillingFactor(nrange,B),M.convert(SolMinusAllowed.real+e0,1),'-',color='blue',lw=3)
 
-ax2.plot(M.FillingFactor(nrange,B),M.convert(SolPlus.real+e0,1),linestyle='--',color='red',lw=2)
-ax2.plot(M.FillingFactor(nrange,B),M.convert(SolMinus.real+e0,1),'--',color='blue',lw=2)
-
+#ax2.plot(M.FillingFactor(nrange,B),M.convert(SolPlus.real+e0,1),linestyle='--',color='red',lw=2)
+#ax2.plot(M.FillingFactor(nrange,B),M.convert(SolMinus.real+e0,1),'--',color='blue',lw=2)
+sqx = arange(2,6,0.01)
+sqy = sqrt(6-sqx)
+sql = 5.0
+ax2.plot(sqx,sql*sqy+1588.0,'-',color='green',lw=2)
+ax2.plot(-sqx,sql*sqy+1588.0,'-',color='green',lw=2)
+ax2.plot(sqx,-2.5*sqx+1603.0,'-',color='green',lw=2)
+ax2.plot(-sqx,-2.5*sqx+1603.0,'-',color='green',lw=2)
 
 ax2.set_xlim((-10,10))
 ax2.set_xticks([-10,-6,-2,2,6,10])
 
-ax2.vlines([-6,-2,2,6],1582,1600,linestyle='-',color='orange',lw=3)
-ax2.vlines(0,1582,1600,linestyle='--',color='orange',lw=3)
+ax2.vlines([-6,-2,2,6],1582,1600,linestyle='-',color='orange',lw=1)
+ax2.vlines(0,1582,1600,linestyle='--',color='orange',lw=1)
 
 ax2.set_ylim((1582,1600))
 ax2.set_xlabel('FillingFactor')
-ax2.set_ylabel('Ramanshift(cm$^{-1}$)')
+ax2.set_ylabel('Raman shift(cm$^{-1}$)')
 f2.tight_layout()
 f2.savefig(savedir+'GateVoltageTuning-POSITION-NO-Symmetric-transitions.png',dpi=300)
 
@@ -120,8 +126,8 @@ ax3.set_xlim((-40,40))
 ax3.set_ylim((1580,1602))
 ax3.set_xticks([-40,-20,0.0,20,40])
 ax3.set_yticks([1580,1584,1588,1592,1596,1600])
-ax3.set_xlabel('Gatevoltage(V)')
-ax3.set_ylabel('Ramanshift(cm$^{-1}$)')
+ax3.set_xlabel('Gate voltage(V)')
+ax3.set_ylabel('Raman shift(cm$^{-1}$)')
 f3.tight_layout()
 f3.savefig(savedir+'GateVoltageTuning-FitData.png',dpi=300)
 
