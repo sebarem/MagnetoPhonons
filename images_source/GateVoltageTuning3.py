@@ -44,6 +44,8 @@ FitData = loadtxt(FitDataPath)
 
 mask1 = array([0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,17,18,19,20,21,24,25,26,27,30,31,32,33,36,37,38,39,42,43,44,47,48,49,52,53,54,55,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79])
 
+mask2 = array([21,22,23,24,25,26,27,28,35,36,37,38,39,40,41,42])
+
 filepath = 'C:/Users/Owner/research/graphene/data/samples/b_field_samples/121_200902/'
 transportpath = '20090309_121_raman/20090310_121_06h56.txt'
 TransportData = loadtxt(filepath+transportpath)
@@ -60,7 +62,11 @@ SolPlusAllowed = M.FPlus(e0,nrange,l,e0,B,delta,cutoff,vF,0.0)
 SolMinusAllowed = M.FMinus(e0,nrange,l,e0,B,delta,cutoff,vF,0.0)
 
 #-------------------------------------------------------------------
-
+#Define function that plots the square root dependence for the T0 level
+def gshift(nu):
+    T0 = M.T(0,B)
+    return M.convert(((T0+e0)/2.0)+sqrt(((T0-e0)/2.0)**2+l*T0**2*(-0.25*nu+1.5))-e0,1)
+#-------------------------------------------------------------------
 f,ax=subplots()
 
 ax.plot(M.FillingFactor(t.Gate2Density(Voltage-2.5,300),B),FitData[:,1],'o',color='0.4',ms=6)
@@ -87,20 +93,25 @@ f.savefig(savedir+'GateVoltageTuning-POSITION-SymmetricTransitions.png',dpi=300)
 
 f2,ax2=subplots()
 
-ax2.plot(M.FillingFactor(t.Gate2Density(Voltage-2.5,300),B),FitData[:,1],'o',color='0.4',ms=6)
 ax2.plot(M.FillingFactor(t.Gate2Density(Voltage-2.5,300),B),FitData[:,4],'o',color='0.4',ms=6)
+
+ax2.plot(M.FillingFactor(t.Gate2Density(Voltage[:29]-2.5,300),B),FitData[:29,1],'o',color='0.4',ms=6)
+ax2.plot(M.FillingFactor(t.Gate2Density(Voltage[29:37]-2.5,300),B),FitData[29:37,1],'o',color='0.4',alpha=0.5,ms=6)
+ax2.plot(M.FillingFactor(t.Gate2Density(Voltage[37:]-2.5,300),B),FitData[37:,1],'o',color='0.4',ms=6)
+
 ax2.plot(M.FillingFactor(nrange,B),M.convert(SolPlusAllowed.real+e0,1),linestyle='-',color='red',lw=3)
 ax2.plot(M.FillingFactor(nrange,B),M.convert(SolMinusAllowed.real+e0,1),'-',color='blue',lw=3)
 
+
+
+
 #ax2.plot(M.FillingFactor(nrange,B),M.convert(SolPlus.real+e0,1),linestyle='--',color='red',lw=2)
 #ax2.plot(M.FillingFactor(nrange,B),M.convert(SolMinus.real+e0,1),'--',color='blue',lw=2)
-sqx = arange(2,6,0.01)
-sqy = sqrt(6-sqx)
-sql = 5.0
-ax2.plot(sqx,sql*sqy+1588.0,'-',color='green',lw=2)
-ax2.plot(-sqx,sql*sqy+1588.0,'-',color='green',lw=2)
-ax2.plot(sqx,-2.5*sqx+1603.0,'-',color='green',lw=2)
-ax2.plot(-sqx,-2.5*sqx+1603.0,'-',color='green',lw=2)
+#sqx = arange(2,6,0.01)
+#ax2.plot(sqx,gshift(sqx)+1588.0,'-',color='green',lw=2)
+#ax2.plot(-sqx,sql*sqy+1588.0,'-',color='green',lw=2)
+#ax2.plot(sqx,-2.5*sqx+1603.0,'-',color='green',lw=2)
+#ax2.plot(-sqx,-2.5*sqx+1603.0,'-',color='green',lw=2)
 
 ax2.set_xlim((-10,10))
 ax2.set_xticks([-10,-6,-2,2,6,10])
@@ -120,7 +131,10 @@ rcParams.update(params)
 
 f3,ax3=subplots()
 
-ax3.plot(Voltage-2.5,FitData[:,1],'o',color='0.4',ms=6)
+ax3.plot(Voltage[:29]-2.5,FitData[:29,1],'o',color='0.4',ms=6)
+ax3.plot(Voltage[29:37]-2.5,FitData[29:37,1],'o',color='0.4',alpha=0.5,ms=6)
+ax3.plot(Voltage[37:]-2.5,FitData[37:,1],'o',color='0.4',ms=6)
+
 ax3.plot(Voltage-2.5,FitData[:,4],'o',color='0.4',ms=6)
 ax3.set_xlim((-40,40))
 ax3.set_ylim((1580,1602))
